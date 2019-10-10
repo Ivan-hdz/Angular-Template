@@ -1,0 +1,58 @@
+
+.menu-toggle-button{
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.menu {
+  display: block;
+  height: 58px;
+  text-align: center;
+}
+.menu button {
+  margin-left: 30px;
+  margin-top: 11px;
+  margin-bottom: 11px;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+.logo-container {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 15px;
+  width: 100vw;
+  max-width: 100%;
+ }
+.logo-container img {
+  max-width: 100%;
+  width: 200px;
+}
+
+
+
+.page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-header {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+.sidenav-container {
+  display: flex;
+  flex-direction: column;
+}

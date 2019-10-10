@@ -1,5 +1,5 @@
 {
-  "name": "Curriculum",
+  "name": "Angular-Template",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "lib": "ng build --prod angular2-image-gallery"
+    "lib-gallery": "ng build --prod angular2-image-gallery"
   },
   "private": true,
   "dependencies": {

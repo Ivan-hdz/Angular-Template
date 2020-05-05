@@ -1,6 +1,4 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+/* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
@@ -8,25 +6,116 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
+// Gradients
+// https://cssgradient.io/
+// http://mcg.mbitson.com/#!?primary=%2308174a&warn=%23ba2a44&accent=%234c1130&themename=HEMA_TT-Angular_Theming
+// Material 2
+$md-primary: (
+  50 : #e5e4e4,
+  100 : #bdbdbd,
+  200 : #919191,
+  300 : #656464,
+  400 : #444343,
+  500 : #232222,
+  600 : #1f1e1e,
+  700 : #1a1919,
+  800 : #151414,
+  900 : #0c0c0c,
+  A100 : #e76c6c,
+  A200 : #e04040,
+  A400 : #ec0000,
+  A700 : #d30000,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$IsagenixMasterClassFrontend-primary: mat-palette($mat-indigo);
-$IsagenixMasterClassFrontend-accent: mat-palette($mat-pink, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$IsagenixMasterClassFrontend-warn: mat-palette($mat-red);
+$md-warn: (
+  50 : #fae0e7,
+  100 : #f3b3c3,
+  200 : #eb809b,
+  300 : #e34d72,
+  400 : #dd2654,
+  500 : #d70036,
+  600 : #d30030,
+  700 : #cd0029,
+  800 : #c70022,
+  900 : #be0016,
+  A100 : #ffe6e8,
+  A200 : #ffb3b8,
+  A400 : #ff8088,
+  A700 : #ff6770,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+$md-accent: (
+  50 : #e1e4e9,
+  100 : #b4bbc8,
+  200 : #828ea4,
+  300 : #506180,
+  400 : #2b3f64,
+  500 : #051d49,
+  600 : #041a42,
+  700 : #041539,
+  800 : #031131,
+  900 : #010a21,
+  A100 : #5d76ff,
+  A200 : #2a4aff,
+  A400 : #0025f6,
+  A700 : #0021dd,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
 
-// Create the theme object (a Sass map containing all of the palettes).
-$IsagenixMasterClassFrontend-theme: mat-light-theme($IsagenixMasterClassFrontend-primary, $IsagenixMasterClassFrontend-accent, $IsagenixMasterClassFrontend-warn);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($IsagenixMasterClassFrontend-theme);
+$my-app-primary: mat-palette($md-primary);
+$my-app-accent:  mat-palette($md-accent);
+$my-app-warn:    mat-palette($md-warn);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
-/* You can add global styles to this file, and also import other style files */
+@include angular-material-theme($my-app-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

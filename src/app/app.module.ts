@@ -4,27 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainComponent } from './main/main.component';
-import { AboutComponent } from './about/about.component';
-import { ProjectsComponent } from './projects/projects.component';
-import {MenuModule} from './shared/menu/menu.module';
-import {SharedModule} from './shared/shared.module';
-import {MyTranslateModule} from './shared/translate/translate.module';
+import {MenuModule} from "./shared/modules/menu/menu.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainComponent,
-    AboutComponent,
-    ProjectsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MenuModule,
-    SharedModule,
-    MyTranslateModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

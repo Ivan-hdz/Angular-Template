@@ -1,0 +1,38 @@
+
+
+<h1 mat-dialog-title align="center">{{data.title}}</h1>
+<div mat-dialog-content>
+  <p *ngIf="data.listBy === ''">{{data.description}}</p>
+  <div *ngIf="data.listBy !== ''">
+    <ol>
+      <li *ngFor="let item of descripcion_lista">{{item}}</li>
+    </ol>
+  </div>
+  <div *ngFor="let field of data.fields">
+  <mat-form-field *ngIf="field.type !== 'combo'">
+    <input
+          autocomplete="off"
+           type="{{field.type}}"
+           placeholder="{{field.name}}"
+           matInput [(ngModel)]="field.value"
+    >
+  </mat-form-field>
+    <mat-form-field *ngIf="field.type === 'combo'">
+      <mat-label  >
+        {{field.name}}
+      </mat-label>
+      <mat-select  [(ngModel)]="field.value" value="">
+        <mat-option *ngFor=" let opt of field.comboOptions"
+                    [value]="opt.id">
+          {{opt.displayed}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <span *ngIf="data.cancelText !== '' ">
+  <button mat-flat-button color="accent" cdkFocusInitial (click)="onNoClick()">{{data.cancelText}}</button>
+  </span>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data.fields" >{{data.okText}}</button>
+</div>

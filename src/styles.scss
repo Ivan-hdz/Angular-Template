@@ -9,173 +9,24 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-$md-primary: (
-  50 : #e6e7e8,
-  100 : #c1c3c6,
-  200 : #979ba0,
-  300 : #6d7279,
-  400 : #4e545d,
-  500 : #2f3640,
-  600 : #2a303a,
-  700 : #232932,
-  800 : #1d222a,
-  900 : #12161c,
-  A100 : #619cff,
-  A200 : #2e7cff,
-  A400 : #005efa,
-  A700 : #0054e0,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #ffffff,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
-$md-accent: (
-  50 : #e3e5eb,
-  100 : #babfcc,
-  200 : #8c95ab,
-  300 : #5e6a89,
-  400 : #3c4a6f,
-  500 : #192a56,
-  600 : #16254f,
-  700 : #121f45,
-  800 : #0e193c,
-  900 : #080f2b,
-  A100 : #677dff,
-  A200 : #3452ff,
-  A400 : #0126ff,
-  A700 : #0022e6,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #ffffff,
-    A400 : #ffffff,
-    A700 : #ffffff,
-  )
-);
-$md-warn: (
-  50 : #f8e7e3,
-  100 : #edc3b9,
-  200 : #e19b8b,
-  300 : #d4725c,
-  400 : #cb5439,
-  500 : #c23616,
-  600 : #bc3013,
-  700 : #b42910,
-  800 : #ac220c,
-  900 : #9f1606,
-  A100 : #ffceca,
-  A200 : #ff9e97,
-  A400 : #ff6f64,
-  A700 : #ff574b,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #000000,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$IsagenixMasterClassFrontend-primary: mat-palette($mat-indigo);
+$IsagenixMasterClassFrontend-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$IsagenixMasterClassFrontend-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$Curriculum-theme: mat-light-theme($md-primary, $md-accent, $md-warn);
+$IsagenixMasterClassFrontend-theme: mat-light-theme($IsagenixMasterClassFrontend-primary, $IsagenixMasterClassFrontend-accent, $IsagenixMasterClassFrontend-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($Curriculum-theme);
+@include angular-material-theme($IsagenixMasterClassFrontend-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-* {
-  font-family: Montserrat, Roboto, "Helvetica Neue", sans-serif;
-}
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  font-family: Montserrat, Roboto, "Helvetica Neue", sans-serif;
-  overflow-x: hidden
-}
-
-.menu-label {
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: Karla,sans-serif;
-  color: #31173b;
-}
-.config-gallery-size {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 5%;
-}
-gallery {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.cards-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.cards-container app-image-card{
-  width: 45%;
-  margin: 2.5% 2.5% 1%;
-}
-@media (max-width: 520px) {
-  .cards-container app-image-card{
-    width: 95%;
-    margin: 2.5% 2.5% 1%;
-  }
-}
-.page-title {
-  text-align: center;
-  font-size: 24px;
-  width: 100%;
-  margin-bottom: 40px;
-  margin-top: 40px;
-}
-.page-text {
-  font-size: 12px;
-  text-justify: inter-word;
-  text-align: justify;
-}
-
-.page-content {
-  margin-bottom: 5vh;
-}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

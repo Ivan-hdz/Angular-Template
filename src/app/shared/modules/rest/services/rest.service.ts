@@ -69,14 +69,14 @@ export class RESTService {
       return req.payload as T;
     }));
   }
-  delete(collection: string, id: string): Observable<boolean> {
+  delete<T>(collection: string, id: string): Observable<T> {
     return this.http.delete<Request<any>>(ENDPOINT + '/' + collection,
       {
         headers: new HttpHeaders().append('Content-Type', 'application/json'),
         params: new HttpParams().append('id', id),
         responseType: 'json'
       }
-    ).pipe(map((req) => req.payload != null));
+    ).pipe(map((req) => req.payload as T));
   }
 
 }

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MenuModule} from "./shared/modules/menu/menu.module";
+import {RESTModule} from "./shared/modules/rest/rest.module";
+import {AngularCommonModule} from "./shared/modules/angular-common/angular-common.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {MenuModule} from "./shared/modules/menu/menu.module";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MenuModule
+    MenuModule,
+    RESTModule,
+    AngularCommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

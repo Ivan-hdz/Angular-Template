@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatPaginatorIntl} from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
 import {LayoutModule} from "@angular/cdk/layout";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 const config = new MatPaginatorIntl();
 config.itemsPerPageLabel = 'Elementos por página';
@@ -26,7 +29,10 @@ config.previousPageLabel = 'Página anterior';
     MatButtonModule,
     LayoutModule,
     MatDividerModule,
-    MatIconModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'es-MX'},

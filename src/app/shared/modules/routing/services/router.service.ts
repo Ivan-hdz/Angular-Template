@@ -9,10 +9,19 @@ export class RouterService {
   private urlAnterior = '';
 
   constructor(private router: Router) { }
-  private irConsole(url = '/') {
+  irConsole(url = '/') {
     this.router.navigate(['/console' + url]);
   }
-  private irLanding(url = '/') {
+  irNotificationSender() {
+    this.router.navigate(['/console/notifications']);
+  }
+  irNotificationHistory() {
+    this.router.navigate(['/console/notifications/history']);
+  }
+  irNotificationSchedule() {
+    this.router.navigate(['/console/notifications/schedule']);
+  }
+  irLanding(url = '/') {
     this.router.navigate([url]);
   }
 

@@ -142,3 +142,20 @@ mat-divider {
   margin-top: 5px !important;
   margin-bottom: 5px !important;
 }
+.header {
+  flex: 0 0 92px;
+  width: 100%;
+}
+.footer {
+  flex: 0 0 50px;
+  width: 100%;
+}
+.content{
+  flex: 1;
+  width: 100%;
+}
+.page-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

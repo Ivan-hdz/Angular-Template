@@ -21,6 +21,18 @@ export class RouterService {
   irNotificationSchedule() {
     this.router.navigate(['/console/notifications/schedule']);
   }
+  irNotificationScheduled() {
+    this.router.navigate(['/console/notifications/scheduled']);
+  }
+  irCrearServicio() {
+    this.router.navigate(['/console/venues/add']);
+  }
+  irEditarServicio() {
+    this.router.navigate(['/console/venues/edit']);
+  }
+  irConsultarServicios() {
+    this.router.navigate(['/console/venues']);
+  }
   irLanding(url = '/') {
     this.router.navigate([url]);
   }

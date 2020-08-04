@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   width: 20vw;
+  max-width: 260px;
   min-width: 200px;
   background-color: #f9f9f9;
 }
@@ -30,7 +31,7 @@
 }
 .btn-menu mat-icon {
   float: right;
-  padding-top: 6px;
+  //padding-top: 6px;
 }
 
 .drawer-header img {
@@ -39,15 +40,13 @@
 .menu-movil {
   position: relative;
 }
-.content{
+.menu-content{
   width: available;
   min-height: 100vh;
   display: flex ;
   flex-direction: column ;
-  //background-color: #232222;
-  background: rgb(215,0,54);
-  background: linear-gradient(135deg, rgba(215,0,54,1) 0%, rgba(5,29,73,1) 100%);
-}
+  background-color: white;
+ }
 @media (max-width: 720px) {
   .drawer {
     width: 60vw;

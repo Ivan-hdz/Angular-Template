@@ -11,4 +11,18 @@ export class AlertMessages {
       [], 'Error', body, 'Aceptar'
     );
   }
+
+  static CONFIRM_DELETE_DIALOG(): ModalData  {
+    return new ModalData(
+      [], 'Confirmación', '¿Desea eliminar el elemento?',
+      'Confirmar', 'Cancelar'
+    );
+  }
+
+  static SUCCESS_DELETE_DIALOG(): ModalData {
+    return new ModalData(
+      [], 'Éxito', 'El elemento se elimino correctamente',
+      'Aceptar'
+    );
+  }
 }

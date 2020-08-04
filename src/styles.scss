@@ -119,7 +119,9 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.mat-icon {
+  line-height: inherit;
+}
 
 button {
   display: inline-flex;

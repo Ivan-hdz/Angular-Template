@@ -119,13 +119,14 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.mat-icon {
-  line-height: inherit;
-}
+
 
 button {
   display: inline-flex;
   vertical-align: middle;
+}
+.mat-icon {
+  line-height: inherit;
 }
 .label {
   white-space: normal;
@@ -147,11 +148,14 @@ button {
 .flex-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .header, .footer, .content{
-  width:100%;
+  width: 100%;
 }
+
 .header {
   flex: 0 0 92px;
 }
@@ -162,15 +166,25 @@ button {
   flex: 1;
 }
 .page-title {
-  font-size: 26px;
+  font-size: 28px;
   margin-top: 20px;
-  margin-left: 15px;
 }
-.page-title .mat-icon {
+.title-icon {
+  margin-right: 15px;
   font-size: 30px;
 }
-.page-content {
+
+.page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 97%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+@media (max-width: 720px) {
+  .mat-card {
+    width: 80vw !important;
+
+  }
 }

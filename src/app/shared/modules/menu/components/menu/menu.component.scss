@@ -29,9 +29,8 @@
   margin: 2.5px 0%;
   height: 3em;
 }
-.btn-menu mat-icon {
-  float: right;
-  //padding-top: 6px;
+.mat-icon {
+  line-height: inherit;
 }
 
 .drawer-header img {

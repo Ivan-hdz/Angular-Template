@@ -7,6 +7,9 @@ import {RESTService} from "../modules/rest/services/rest.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {ModalComponent} from "../modules/angular-common/components/modal/modal.component";
 import {AlertMessages} from "../classes/AlertMessages";
+import {UserType} from "../enums/UserType";
+import {User} from "../classes/User";
+import {Credentials} from "../interfaces/Credentials";
 
 @Injectable({
   providedIn: 'root'
@@ -64,19 +67,18 @@ export class UserService {
     const USER_LOGIN_ENDPOINT = 'user/login'
     return this.rest.post<User>(USER_LOGIN_ENDPOINT, credenciales)
       .pipe(map((usr: User) => {
-        if (usr && usr.getApiKey()) {
-          // TODO Preprocess the UserInterface object and commit it
-          this.commitChanges(usr);
-        }
-        if (this.isLoggedIn()) {
-          switch (this.getUserValue().getType()) {
-            // TODO DEFINE WHAT TO DO FOR EACH USER TYPE
-            case UserType.TYPE_ONE:
+        if (usr) {
+          switch (usr.getType()) {
+            case UserType.CONSUMIDOR:
+              usr = Object.setPrototypeOf(usr, null);
               break;
-            case UserType.TYPE_TOW:
+            case UserType.ANUNCIANTE:
+              usr = Object.setPrototypeOf(usr, null);
               break;
+
           }
-        } else {
+          this.commitChanges(usr);
+        }  else {
           // this.router.irLogin();
           this.modal.open(ModalComponent, {
             data: AlertMessages.ERROR_MESSAGE('Usuario o contraseña incorrectas')
@@ -136,75 +138,4 @@ export class UserService {
     // return of(true);
   }
 }
-export interface UserInterface {
-  getId(): string;
-  getUsername(): string;
-  getPassword(): string;
-  getType(): UserType;
-  getApiKey(): string;
-  setId(id: string): void;
-  setUsername(username: string): void;
-  setPassword(password: string): void;
-  setType(type: UserType): void;
-  setApiKey(apiKey: string): void;
-}
-export abstract class User implements UserInterface{
-  private apiKey: string;
-  private id: string;
-  private password: string;
-  private type: UserType;
-  private username: string;
 
-  getApiKey(): string {
-    return this.apiKey;
-  }
-
-  getId(): string {
-    return this.id;
-  }
-
-  getPassword(): string {
-    return this.password;
-  }
-
-
-  getUsername(): string {
-    return this.username;
-  }
-
-  setApiKey(apiKey: string): void {
-    this.apiKey = apiKey
-  }
-
-  setId(id: string): void {
-    this.id = id;
-  }
-
-  setPassword(password: string): void {
-    this.password = password;
-  }
-
-  setType(type: UserType): void {
-    this.type = type;
-  }
-
-  setUsername(username: string): void {
-    this.username = username;
-  }
-
-  getType(): UserType {
-    throwError('Operación no implementada');
-    return undefined;
-  }
-
-
-}
-export interface Credentials {
-  username: string;
-  password: string;
-}
-export enum UserType {
-  // TODO DEFINE USER TYPES
-  TYPE_ONE,
-  TYPE_TOW
-}

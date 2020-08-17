@@ -43,7 +43,7 @@ export class UserService {
 
   getUserValue(): User {
     if (this.$userSubject.getValue() === null || this.$userSubject.getValue() === undefined) {
-      this.cerrarSesion();
+      this.logout();
     }
     return this.$userSubject.getValue();
   }
@@ -92,7 +92,7 @@ export class UserService {
         return throwError(error);
       }));
   }
-  cerrarSesion() {
+  logout() {
     localStorage.removeItem(this.LOCAL_STORAGE_USER_KEY);
     this.$userSubject.next(null);
     // this.router.irLogin();

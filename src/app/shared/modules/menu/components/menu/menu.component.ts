@@ -4,6 +4,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {RouterService} from "../../../routing/services/router.service";
 import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 import {MatDrawer} from "@angular/material/sidenav";
+import {UserService} from "../../../../services/user.service";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,13 +14,11 @@ export class MenuComponent implements OnInit {
   @ViewChild('drawer', {static: true}) drawer: MatDrawer;
   public mode;
   public shouldHaveMenu = false;
-  public tieneMuchosPerfiles: boolean;
-  public puedeCambiarPerfil: boolean;
   constructor(public breakpointObserver: BreakpointObserver,
-              public router: RouterService) {
+              public router: RouterService,
+              private userService: UserService
+  ) {
     this.mode = 'side';
-    this.tieneMuchosPerfiles = false;
-    this.puedeCambiarPerfil = false;
   }
   private ponerResponsive() {
     // css breakpoint
@@ -44,16 +43,26 @@ export class MenuComponent implements OnInit {
     } else {
       this.drawer.open();
     }
-    this.shouldHaveMenu = true;
   }
   private deshabilitarMenu() {
-    this.tieneMuchosPerfiles = false;
-    this.drawer.close();
     this.shouldHaveMenu = false;
+  }
+  private habilitarMenu() {
+    this.shouldHaveMenu = true;
+  }
+  logout() {
+    this.userService.logout();
   }
   ngOnInit() {
     // open or close when Usuario is logged in/out
+    this.userService.getUserObservable().subscribe((usr) => {
+      if (usr === null || usr === undefined) {
+        this.deshabilitarMenu();
+      } else {
+        this.habilitarMenu();
+      }
 
+    });
     this.ponerResponsive();
     this.alternarMenuSegunModoResponsive();
   }

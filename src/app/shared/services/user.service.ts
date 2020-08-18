@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, throwError} from "rxjs";
+import {RESTService} from "../modules/rest/services/rest.service";
 import {MatDialog} from "@angular/material/dialog";
 import {RouterService} from "../modules/routing/services/router.service";
 import {catchError, map} from "rxjs/operators";
-import {RESTService} from "../modules/rest/services/rest.service";
-import {HttpErrorResponse} from "@angular/common/http";
 import {ModalComponent} from "../modules/angular-common/components/modal/modal.component";
 import {AlertMessages} from "../classes/AlertMessages";
-import {UserType} from "../enums/UserType";
+import {HttpErrorResponse} from "@angular/common/http";
 import {User} from "../classes/User";
 import {Credentials} from "../interfaces/Credentials";
+import {UserType} from "../enums/UserType";
+import {BooleanStateResponse} from "../classes/BooleanStateResponse";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
   private readonly user$: Observable<User>;
   private $userSubject: BehaviorSubject<User>;
 
-  private  USER_COLLECTION = 'user';
+  private  USER_COLLECTION = 'profile';
+  private CONSOLE_AUTH_LOGIN = 'console/auth/login';
   private USER_CHANGE_PASSWORD_ENDPOINT = 'user/change_password';
   private SEND_RECOVERY_EMAIL_ENDPOINT = 'user/restore_request';
 
@@ -45,38 +48,28 @@ export class UserService {
     if (this.$userSubject.getValue() === null || this.$userSubject.getValue() === undefined) {
       this.logout();
     }
-    return this.$userSubject.getValue();
+    return Object.setPrototypeOf(this.$userSubject.getValue(), User);
   }
   getUserId(): string {
-    return this.$userSubject.getValue().getId();
+    return this.$userSubject.getValue().id;
   }
   isLoggedIn(): boolean {
     if (this.getUserValue()) {
-      return this.getUserValue().getApiKey() != null;
+      return this.getUserValue().id != null;
     } else {
       return false;
     }
   }
   changeUserType(userType: UserType) {
     const u = this.getUserValue();
-    u.setType(userType);
+    u.type = userType
     this.commitChanges(u);
   }
 
   login(credenciales: Credentials) {
-    const USER_LOGIN_ENDPOINT = 'user/login'
-    return this.rest.post<User>(USER_LOGIN_ENDPOINT, credenciales)
+    return this.rest.post<User>(this.CONSOLE_AUTH_LOGIN, credenciales)
       .pipe(map((usr: User) => {
         if (usr) {
-          switch (usr.getType()) {
-            case UserType.CONSUMIDOR:
-              usr = Object.setPrototypeOf(usr, null);
-              break;
-            case UserType.ANUNCIANTE:
-              usr = Object.setPrototypeOf(usr, null);
-              break;
-
-          }
           this.commitChanges(usr);
         }  else {
           // this.router.irLogin();
@@ -84,6 +77,7 @@ export class UserService {
             data: AlertMessages.ERROR_MESSAGE('Usuario o contraseña incorrectas')
           });
         }
+
         return usr;
       }),  catchError((error: HttpErrorResponse) => {
         this.modal.open(ModalComponent, {
@@ -114,8 +108,8 @@ export class UserService {
     };
     return this.rest.getBy<User>(this.USER_COLLECTION,find_by, order_by);
   }
-  get(id: string): Observable<User> {
-    return this.rest.getOne<User>(this.USER_COLLECTION, id);
+  get<T>(id: string): Observable<T> {
+    return this.rest.getOne<T>(this.USER_COLLECTION, id);
   }
   changeUserPassword(_old: string, _new: string, _id: string) {
 
@@ -127,8 +121,8 @@ export class UserService {
   deleteUser(id: string) {
     return this.rest.delete(this.USER_COLLECTION, id);
   }
-  updateUser( user: User, id: string): Observable<User> {
-    return this.rest.update<User>(this.USER_COLLECTION, id, user);
+  updateUser( user: User, id: string): Observable<BooleanStateResponse> {
+    return this.rest.update<BooleanStateResponse>(this.USER_COLLECTION, id, user);
   }
 
   sendPasswordRecoveryEmail(email: string): Observable<boolean> {
@@ -137,5 +131,6 @@ export class UserService {
     });
     // return of(true);
   }
+
 }
 

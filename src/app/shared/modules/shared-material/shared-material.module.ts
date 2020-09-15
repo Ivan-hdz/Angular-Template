@@ -21,6 +21,15 @@ config.firstPageLabel = 'Primer página';
 config.lastPageLabel = 'Última página';
 config.nextPageLabel = 'Página siguiente';
 config.previousPageLabel = 'Página anterior';
+config.getRangeLabel = (page, pageSize, length) => {
+  let str = (page*pageSize+1) + ' - ';
+  if (((page + 1)*pageSize) > length) {
+    str += length;
+  } else {
+    str += ((page + 1)*pageSize)
+  }
+  return str + ' de ' + length;
+}
 
 
 @NgModule({

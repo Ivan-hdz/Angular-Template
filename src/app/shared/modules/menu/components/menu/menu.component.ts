@@ -15,9 +15,8 @@ export class MenuComponent implements OnInit {
   public mode;
   public shouldHaveMenu = false;
   constructor(public breakpointObserver: BreakpointObserver,
-              public router: RouterService,
-              private userService: UserService
-  ) {
+              private userService: UserService,
+              public router: RouterService) {
     this.mode = 'side';
   }
   private ponerResponsive() {
@@ -27,6 +26,7 @@ export class MenuComponent implements OnInit {
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.mode = 'side';
+          console.log(this.shouldHaveMenu)
           if (this.shouldHaveMenu) {
             this.drawer.open();
           }

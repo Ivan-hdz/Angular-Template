@@ -8,6 +8,7 @@
 @include mat-core();
 // Gradients
 // https://cssgradient.io/
+// TODO Theming, elegir 3 colores para la app ( primary, accent, warn):
 // http://mcg.mbitson.com/#!?primary=%2308174a&warn=%23ba2a44&accent=%234c1130&themename=HEMA_TT-Angular_Theming
 // Material 2
 $md-primary: (
@@ -44,38 +45,6 @@ $md-primary: (
 );
 
 
-$md-warn: (
-  50 : #fae0e7,
-  100 : #f3b3c3,
-  200 : #eb809b,
-  300 : #e34d72,
-  400 : #dd2654,
-  500 : #d70036,
-  600 : #d30030,
-  700 : #cd0029,
-  800 : #c70022,
-  900 : #be0016,
-  A100 : #ffe6e8,
-  A200 : #ffb3b8,
-  A400 : #ff8088,
-  A700 : #ff6770,
-  contrast: (
-    50 : #000000,
-    100 : #000000,
-    200 : #000000,
-    300 : #ffffff,
-    400 : #ffffff,
-    500 : #ffffff,
-    600 : #ffffff,
-    700 : #ffffff,
-    800 : #ffffff,
-    900 : #ffffff,
-    A100 : #000000,
-    A200 : #000000,
-    A400 : #000000,
-    A700 : #000000,
-  )
-);
 $md-accent: (
   50 : #e1e4e9,
   100 : #b4bbc8,
@@ -109,6 +78,39 @@ $md-accent: (
   )
 );
 
+$md-warn: (
+  50 : #fae0e7,
+  100 : #f3b3c3,
+  200 : #eb809b,
+  300 : #e34d72,
+  400 : #dd2654,
+  500 : #d70036,
+  600 : #d30030,
+  700 : #cd0029,
+  800 : #c70022,
+  900 : #be0016,
+  A100 : #ffe6e8,
+  A200 : #ffb3b8,
+  A400 : #ff8088,
+  A700 : #ff6770,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
 
 $my-app-primary: mat-palette($md-primary);
 $my-app-accent:  mat-palette($md-accent);
@@ -120,26 +122,9 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 button {
   display: inline-flex;
   vertical-align: middle;
-}
-.label {
-  white-space: normal;
-  cursor: pointer;
-  margin-left: 5px;
-  display: inline-flex;
-  vertical-align: middle;
-}
-.mat-divider {
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-}
-
-.flex-column {
-  display: flex;
-  flex-direction: column;
 }
 
 .flex-row {
@@ -147,37 +132,6 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-}
-
-.header, .footer, .content{
-  width: 100%;
-}
-
-.header {
-  flex: 0 0 92px;
-}
-.footer {
-  flex: 0 0 50px;
-}
-.content{
-  flex: 1;
-}
-.page-title {
-  font-size: 28px;
-  margin-top: 20px;
-}
-.title-icon {
-  margin-right: 15px;
-  font-size: 30px;
-}
-
-.page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 97%;
-  margin-left: 15px;
-  margin-right: 15px;
 }
 .two-cols{
   width: 45%;
@@ -189,9 +143,4 @@ button {
   margin-right: 2.5%;
   margin-left: 2.5%;
 }
-@media (max-width: 720px) {
-  .mat-card {
-    width: 80vw !important;
 
-  }
-}

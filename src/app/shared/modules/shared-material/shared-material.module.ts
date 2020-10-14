@@ -7,13 +7,13 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
-import {LayoutModule} from "@angular/cdk/layout";
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatTableModule} from "@angular/material/table";
-import {MatSortModule} from "@angular/material/sort";
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 const config = new MatPaginatorIntl();
 config.itemsPerPageLabel = 'Elementos por página';
@@ -22,14 +22,14 @@ config.lastPageLabel = 'Última página';
 config.nextPageLabel = 'Página siguiente';
 config.previousPageLabel = 'Página anterior';
 config.getRangeLabel = (page, pageSize, length) => {
-  let str = (page*pageSize+1) + ' - ';
-  if (((page + 1)*pageSize) > length) {
+  let str = (page * pageSize + 1) + ' - ';
+  if (((page + 1) * pageSize) > length) {
     str += length;
   } else {
-    str += ((page + 1)*pageSize)
+    str += ((page + 1) * pageSize);
   }
   return str + ' de ' + length;
-}
+};
 
 
 @NgModule({

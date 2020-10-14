@@ -1,5 +1,5 @@
 export enum AppRoutes {
-  // TODO Replace the following routes with yours
+  // TODO Replace the following routes
   LOGIN = '/cuentas/login',
   REESTABLECER_CONTRASENA = '/cuentas/reestablecer_contrasenia',
   HOME = '/bienvenida',

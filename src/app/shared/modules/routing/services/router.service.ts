@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
-import {AppRoutes} from "../enums/AppRoutes";
+import {AppRoutes} from '../enums/AppRoutes';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,39 +1,23 @@
 <mat-drawer-container class="container">
   <mat-drawer #drawer [opened]="shouldHaveMenu" class="drawer" [mode]="mode">
     <div class="drawer-header" >
-      <img src="assets/menu-logo.jpg"  />
+      <img src="" alt="Aqui puede haber una imagen" />
     </div>
     <div class="drawer-entries">
-      <button class="btn-menu" mat-button color="primary" (click)="router.irNotificationSender()" >
-        <label >Enviar notificación</label>
+      <button class="btn-menu" mat-button color="primary">
+        <label >Entrada 1</label>
         <mat-icon>send</mat-icon>
 
       </button>
-      <button class="btn-menu" mat-button color="primary" (click)="router.irNotificationSchedule()">
-        <label >Programar notificación</label>
+      <button class="btn-menu" mat-button color="primary" >
+        <label >Entrada 2</label>
         <mat-icon>schedule</mat-icon>
 
       </button>
 
-      <button class="btn-menu" mat-button color="primary" (click)="router.irNotificationScheduled()" >
-        <label >Notificaciones programadas</label>
+      <button class="btn-menu" mat-button color="primary"  >
+        <label >Entrada 3</label>
         <mat-icon>alarm_on</mat-icon>
-
-      </button>
-      <button class="btn-menu" mat-button color="primary" (click)="router.irNotificationHistory()" >
-        <label >Historial de notificaciones</label>
-        <mat-icon>history</mat-icon>
-
-      </button>
-      <mat-divider></mat-divider>
-      <button class="btn-menu" mat-button color="primary" (click)="router.irCrearServicio()" >
-        <label >Crear servicio</label>
-        <mat-icon>add</mat-icon>
-
-      </button>
-      <button class="btn-menu" mat-button color="primary" (click)="router.irConsultarServicios()" >
-        <label >Consultar servicios</label>
-        <mat-icon>history</mat-icon>
 
       </button>
     </div>

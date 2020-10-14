@@ -12,24 +12,26 @@ import {map} from 'rxjs/operators';
 export class RESTService {
 
   constructor(private http: HttpClient) { }
+  // TODO asi es como se manejan los metodos HTTP para interactuar con el servidor
+  // TODO cambiar para ajustar a necesidad
   getAll<T>(collection: string): Observable<T[]> {
     return this.http.get<Request<T>>(ENDPOINT + '/' + collection + '/getAll',
       {
         headers: new HttpHeaders().append('Content-Type', 'application/json'),
         responseType: 'json'
       }).pipe(map((req) => {
-        return req.payload as T[]
+        return req.payload as T[];
       }));
   }
-  getBy<T>(collection: string, find_by: any, order_by: any): Observable<T[]> {
-    const findBy64 = btoa(JSON.stringify(find_by));
-    const orderBy64 = btoa(JSON.stringify(order_by));
+  getBy<T>(collection: string, findByy: any, orderBy: any): Observable<T[]> {
+    const findBy64 = btoa(JSON.stringify(findByy));
+    const orderBy64 = btoa(JSON.stringify(orderBy));
     return this.http.get<Request<T>>(ENDPOINT + '/' + collection + '/getBy',
       {
         headers: new HttpHeaders().append('Content-Type', 'application/json'),
         params: new HttpParams()
           .append('findBy', findBy64)
-          .append('orderBy',orderBy64),
+          .append('orderBy', orderBy64),
         responseType: 'json'
       }
       ).pipe(map((req) => {

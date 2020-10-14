@@ -26,8 +26,9 @@ export class AuthGuard implements CanActivate {
     });
   }
   private rolCanActivate(path: string, rol: UserType): boolean {
-    // TODO Here goes access matrix
-
+    // TODO Aqui se filtran que roles pueden acceder a que ruta de la app
+    // En este caso, al tener un guard por modulo, solo nos enfocamos a describir que rol puede entrar al modulo
+    // Ejemplo
     if (path.includes(AppRoutes.HOME)) {
       return rol !== UserType.NONE
     } else {
@@ -39,31 +40,8 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.currentUser && this.currentUser.apiKey) {
-      if (state.url.includes(AppRoutes.LOGIN) ||
-        state.url.includes(AppRoutes.REESTABLECER_CONTRASENA)) {
-        this.router.irBienvenida();
-        return false;
-      } else {
-        if (
-          this.currentUser.type === UserType.NONE &&
-          state.url.includes(AppRoutes.SELECCION_PERFIL) === false
-        ) {
-          this.router.irSeleccionarPerfil();
-          return false;
-        } else {
-          return  this.rolCanActivate(state.url, this.currentUser.type);
-        }
-      }
-    } else {
-      if (state.url.includes(AppRoutes.LOGIN) ||
-        state.url.includes(AppRoutes.REESTABLECER_CONTRASENA)) {
-        return true;
-      } else {
-        this.router.irLogin();
-        return false;
-      }
+    // TODO recomiendo tener un auth guard por modulo
+    return  this.rolCanActivate(state.url, this.currentUser.type);
 
-    }
   }
 }

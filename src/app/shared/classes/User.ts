@@ -1,4 +1,4 @@
-import {UserType} from "../enums/UserType";
+import {UserType} from '../enums/UserType';
 
 export abstract class User {
   public apiKey: string;
